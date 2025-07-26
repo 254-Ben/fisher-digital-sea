@@ -8,19 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CalendarDays, Plus, Fish, Clock, CheckCircle, XCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-interface Permit {
-  id: string;
-  type: string;
-  season: string;
-  status: string;
-  expiry: string;
-}
-
-interface SeasonalPermitsProps {
-  permits: Permit[];
-}
-
-export const SeasonalPermits = ({ permits }: SeasonalPermitsProps) => {
+export const SeasonalPermits = ({ permits }) => {
   const [showApplyForm, setShowApplyForm] = useState(false);
   const [newPermit, setNewPermit] = useState({
     type: "",
@@ -30,7 +18,7 @@ export const SeasonalPermits = ({ permits }: SeasonalPermitsProps) => {
     quotaRequest: ""
   });
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "active":
         return "bg-green-100 text-green-800";
@@ -45,7 +33,7 @@ export const SeasonalPermits = ({ permits }: SeasonalPermitsProps) => {
     }
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status) => {
     switch (status.toLowerCase()) {
       case "active":
         return <CheckCircle className="h-4 w-4" />;
@@ -59,7 +47,7 @@ export const SeasonalPermits = ({ permits }: SeasonalPermitsProps) => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("New permit application:", newPermit);
     setShowApplyForm(false);

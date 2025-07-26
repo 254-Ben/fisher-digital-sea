@@ -3,23 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { QrCode, Download, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface Fisher {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  licenseNumber: string;
-  issueDate: string;
-  expiryDate: string;
-  photo: string;
-}
-
-interface DigitalIdCardProps {
-  fisher: Fisher;
-}
-
-export const DigitalIdCard = ({ fisher }: DigitalIdCardProps) => {
+export const DigitalIdCard = ({ fisher }) => {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div className="text-center">

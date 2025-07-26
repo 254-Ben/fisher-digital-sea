@@ -6,11 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload, User, Mail, Phone, MapPin, Camera } from "lucide-react";
 
-interface RegistrationFormProps {
-  onComplete: (data: any) => void;
-}
-
-export const RegistrationForm = ({ onComplete }: RegistrationFormProps) => {
+export const RegistrationForm = ({ onComplete }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,10 +16,10 @@ export const RegistrationForm = ({ onComplete }: RegistrationFormProps) => {
     emergencyContact: "",
     emergencyPhone: "",
     experience: "",
-    photo: null as File | null
+    photo: null
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     // Generate license data
@@ -42,11 +38,11 @@ export const RegistrationForm = ({ onComplete }: RegistrationFormProps) => {
     onComplete(licenseData);
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhotoUpload = (e) => {
     const file = e.target.files?.[0];
     if (file) {
       setFormData(prev => ({ ...prev, photo: file }));

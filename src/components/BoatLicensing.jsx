@@ -8,19 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Ship, Plus, FileText, Calendar, AlertCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-interface Boat {
-  id: string;
-  name: string;
-  type: string;
-  status: string;
-  expiry: string;
-}
-
-interface BoatLicensingProps {
-  boats: Boat[];
-}
-
-export const BoatLicensing = ({ boats }: BoatLicensingProps) => {
+export const BoatLicensing = ({ boats }) => {
   const [showAddForm, setShowAddForm] = useState(false);
   const [newBoat, setNewBoat] = useState({
     name: "",
@@ -31,7 +19,7 @@ export const BoatLicensing = ({ boats }: BoatLicensingProps) => {
     homePort: ""
   });
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
       case "active":
         return "bg-green-100 text-green-800";
@@ -44,14 +32,14 @@ export const BoatLicensing = ({ boats }: BoatLicensingProps) => {
     }
   };
 
-  const isExpiringSoon = (expiryDate: string) => {
+  const isExpiringSoon = (expiryDate) => {
     const expiry = new Date(expiryDate);
     const today = new Date();
     const daysUntilExpiry = Math.ceil((expiry.getTime() - today.getTime()) / (1000 * 3600 * 24));
     return daysUntilExpiry <= 30 && daysUntilExpiry > 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Handle boat registration
     console.log("New boat registration:", newBoat);
